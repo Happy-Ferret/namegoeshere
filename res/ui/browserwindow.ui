@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.19.0 -->
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <template class="BrowserWindow" parent="GtkApplicationWindow">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkNotebook" id="notebook">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child type="tab">
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child type="tab">
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child type="tab">
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkToolbar" id="toolbar1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkToolButton" id="btn_back">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Back</property>
+            <property name="use_underline">True</property>
+            <property name="stock_id">gtk-go-back</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolButton" id="btn_forward">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Forward</property>
+            <property name="use_underline">True</property>
+            <property name="stock_id">gtk-go-forward</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparatorToolItem" id="sep2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolItem" id="toolitm_urlbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="urlbar">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparatorToolItem" id="sep1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolButton" id="btn_newtab">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">New tab</property>
+            <property name="use_underline">True</property>
+            <property name="stock_id">gtk-add</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolButton" id="btn_settings">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Settings</property>
+            <property name="use_underline">True</property>
+            <property name="stock_id">gtk-preferences</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
