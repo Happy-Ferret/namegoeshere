@@ -1,4 +1,5 @@
 using Gtk;
+using WebKit;
 
 public class BrowserTab: Box {
  
