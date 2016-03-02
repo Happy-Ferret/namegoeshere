@@ -12,17 +12,12 @@ public class BrowserNotebook: Notebook {
 		this.append_page(scrolledwindow, new BrowserTabSign());
 	}
 
-	public ScrolledWindow get_scrolledwindow(int? index) {
-		if (index == null) {
-			return this.get_nth_page(this.get_current_page()) as ScrolledWindow;
-		}
-		else {
-			return this.get_nth_page(index) as ScrolledWindow;
-		}
+	public ScrolledWindow get_current_scrolledwindow() {
+		return this.get_nth_page(this.get_current_page()) as ScrolledWindow;
 	}
 
-	public WebKit.WebView get_webview(int? index = null) {
-		return this.get_scrolledwindow(index).get_child() as WebKit.WebView;
+	public WebKit.WebView get_current_webview() {
+		return this.get_current_scrolledwindow().get_child() as WebKit.WebView;
 	}
 
 }
