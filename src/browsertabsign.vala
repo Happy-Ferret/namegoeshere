@@ -11,6 +11,7 @@ public class BrowserTabSign: Box {
         this.pack_start(new Label(LABEL_TAB), true, true);
         this.pack_start(new Button.from_icon_name(ICON_CLOSE,
 IconSize.SMALL_TOOLBAR), true, true);
+		this.show_all();
     }
 
 }
