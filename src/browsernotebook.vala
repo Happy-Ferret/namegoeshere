@@ -1,4 +1,5 @@
 using Gtk;
+using WebKit;
 
 public class BrowserNotebook: Notebook {
 
@@ -7,9 +8,9 @@ public class BrowserNotebook: Notebook {
 	}
 
 	public void new_tab() {
-		ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
-		scrolledwindow.add(new WebKit.WebView());
-		this.append_page(scrolledwindow, new BrowserTabSign());
+		//ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
+		//scrolledwindow.add(new WebView());
+		this.append_page(new WebView(), new BrowserTabSign());
 		this.show_all();
 	}
 
@@ -17,8 +18,8 @@ public class BrowserNotebook: Notebook {
 		return this.get_nth_page(this.get_current_page()) as ScrolledWindow;
 	}
 
-	public WebKit.WebView get_current_webview() {
-		return this.get_current_scrolledwindow().get_child() as WebKit.WebView;
+	public WebView get_current_webview() {
+		return this.get_nth_page(this.get_current_page()) as WebView;
 	}
 
 }
