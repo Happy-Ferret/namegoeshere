@@ -10,6 +10,7 @@ public class BrowserNotebook: Notebook {
 		ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
 		scrolledwindow.add(new WebKit.WebView());
 		this.append_page(scrolledwindow, new BrowserTabSign());
+		this.show_all();
 	}
 
 	public ScrolledWindow get_current_scrolledwindow() {
