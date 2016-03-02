@@ -101,6 +101,7 @@
             <property name="label" translatable="yes">New tab</property>
             <property name="use_underline">True</property>
             <property name="stock_id">gtk-add</property>
+            <signal name="clicked" handler="on_btn_newtab_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
