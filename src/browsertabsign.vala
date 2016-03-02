@@ -11,17 +11,17 @@ public class BrowserTabSign: Box {
 	private Button closebutton;
 
     public BrowserTabSign() {
-		favicon = new Image.from_icon_name(ICON_TAB);
+		favicon = new Image.from_icon_name(ICON_TAB, IconSize.SMALL_TOOLBAR);
 		title = new Label(LABEL_TAB);
 		closebutton = new Button.from_icon_name(ICON_CLOSE,
 												IconSize.SMALL_TOOLBAR);
-        this.pack_start(favicon, IconSize.SMALL_TOOLBAR), true, true);
-        this.pack_start(title, true, true);
-        this.pack_start(closebutton, true, true);
+        this.pack_start(favicon, false, false, 0);
+        this.pack_start(title, true, true, 0);
+        this.pack_start(closebutton, false, false, 0);
 		this.show_all();
     }
 
-	public void change_title(string title) {
+	public void set_title(string title) {
 		this.title.set_text(title);
 	}
 }
