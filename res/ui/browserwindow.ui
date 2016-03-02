@@ -76,6 +76,7 @@
               <object class="GtkEntry" id="urlbar">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <signal name="activate" handler="on_urlbar_activate" swapped="no"/>
               </object>
             </child>
           </object>
