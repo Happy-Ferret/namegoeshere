@@ -1,4 +1,4 @@
-project("lele" C)
+project("namegoeshere" C)
 # hehehe
 cmake_minimum_required(VERSION 3.4)
 
