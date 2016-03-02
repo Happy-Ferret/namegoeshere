@@ -10,7 +10,11 @@ public class BrowserNotebook: Notebook {
 	public void new_tab() {
 		//ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
 		//scrolledwindow.add(new WebView());
-		this.append_page(new WebView(), new BrowserTabSign());
+		WebView webview = new WebView();
+		webview.connect('tile-changed', this.on_webview_title_changed);
+		webview.connect('load-started', this.on_webview_load_started);
+		webview.connect('load-finished', this.on_webview_load_finished);
+		this.append_page(webview, new BrowserTabSign());
 		this.show_all();
 	}
 
@@ -21,5 +25,15 @@ public class BrowserNotebook: Notebook {
 	public WebView get_current_webview() {
 		return this.get_nth_page(this.get_current_page()) as WebView;
 	}
+	
+	private void on_webview_title_changed(WebView webview, WebFrame webframe,
+										  string title) {
+		this.get_tab_label(webview).set_label(title);
+	}
+		
+
+	private void on_webview_load_started();
+
+	private void on_webview_load_finished();
 
 }
