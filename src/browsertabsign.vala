@@ -1,6 +1,6 @@
 using Gtk;
 
-static const string ICON_TAB = "applications_internet";
+static const string ICON_TAB = "applications-internet";
 static const string ICON_CLOSE = "window-close";
 static const string LABEL_TAB = "New tab";
 
