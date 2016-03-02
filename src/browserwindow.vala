@@ -11,18 +11,17 @@ public class BrowserWindow: ApplicationWindow {
 		Object (application: app);
 		this.browsernotebook = new BrowserNotebook();
 		this.add(this.browsernotebook);
-		stdout.printf("haha");
+		stdout.printf("haha\n");
 		this.show_all();
 	}
 
 	[GtkCallback]
 	private void on_btn_newtab_clicked(ToolButton toolbutton) {
 		browsernotebook.new_tab();
-		//notebook.new_tab();
 	}
 
 	[GtkCallback]
 	private void on_urlbar_activate(Entry entry) {
-		//notebook.get_current_webview().load_uri("https://google.com");
+		browsernotebook.get_current_webview().load_uri(entry.get_text());
 	}
 }
