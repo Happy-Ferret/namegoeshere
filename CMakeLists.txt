@@ -35,6 +35,7 @@ gresource(${CMAKE_CURRENT_SOURCE_DIR}/res gresources.xml
 vala_precompile(VALA_C
 	src/browsertabsign.vala
 	src/browsertab.vala
+	src/browsernotebook.vala
 	src/browserwindow.vala
 	src/namegoeshere.vala
 PACKAGES
