@@ -22,7 +22,8 @@ find_package(VALA REQUIRED)
 include(${VALA_USE_FILE})
 
 find_package(PkgConfig)
-pkg_check_modules(GTK REQUIRED gtk+-3.0)
+pkg_check_modules(GTK REQUIRED gtk+-3.0
+	webkit2gtk-4.0)
 add_definitions(${GTK_CFLAGS} ${GTK_CFLAGS_OTHER})
 link_libraries(${GTK_LIBRARIES})
 link_directories(${GTK_LIBRARY_DIRS})
@@ -32,6 +33,8 @@ gresource(${CMAKE_CURRENT_SOURCE_DIR}/res gresources.xml
 	${CMAKE_BINARY_DIR} RESOURCE_FILE)
 
 vala_precompile(VALA_C
+	src/browsertabsign.vala
+	src/browsertab.vala
 	src/browserwindow.vala
 	src/namegoeshere.vala
 PACKAGES
