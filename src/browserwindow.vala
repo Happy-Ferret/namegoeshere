@@ -20,6 +20,6 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_urlbar_activate(Entry entry) {
-		notebook.get_webview().load_uri("https://google.com");
+		notebook.get_current_webview().load_uri("https://google.com");
 	}
 }
