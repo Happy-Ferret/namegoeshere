@@ -14,8 +14,7 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_btn_newtab_clicked(ToolButton toolbutton) {
-		notebook.append_page(new BrowserTab(), new BrowserTabSign());
-		notebook.show_all();
+		notebook.new_tab();
 	}
 
 	[GtkCallback]
