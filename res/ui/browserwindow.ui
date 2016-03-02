@@ -5,28 +5,7 @@
   <template class="BrowserWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
     <child>
-      <object class="BrowserNotebook" id="notebook">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child type="tab">
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child type="tab">
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child type="tab">
-          <placeholder/>
-        </child>
-      </object>
+      <placeholder/>
     </child>
     <child type="titlebar">
       <object class="GtkToolbar" id="toolbar1">
