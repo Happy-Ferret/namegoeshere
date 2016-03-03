@@ -6,7 +6,7 @@ public class BrowserNotebook: Notebook {
 	private BrowserWindow browserwindow;
 
 	public BrowserNotebook(BrowserWindow browserwindow) {
-		this.change_current_page.connect(this.on_current_page_changed);
+		//this.change_current_page.connect(this.on_current_page_changed);
 		this.browserwindow = browserwindow;
 		new_tab();
 	}
@@ -39,15 +39,23 @@ public class BrowserNotebook: Notebook {
 				break;
 			case LoadEvent.FINISHED:
 				stdout.printf("finished\n");
+				this.url_of_current_page_update();
 				//BrowserTabSign tab_label = this.get_tab_label(webview) as BrowserTabSign;
 				//tab_label.set_title(title);
 				break;
 		}
 	}
 	
-	private void on_current_page_changed(int index) {
+	/*private void on_current_page_changed(int index) {
 		WebView webview = this.get_nth_page(index) as WebView;
 		string title = webview.get_title();
 		this.browserwindow.set_title(title);
+	}*/
+
+	private void url_of_current_page_update() {
+		WebView webview = this.get_nth_page(this.get_current_page()) as WebView;
+		string title = webview.get_uri();
+		stdout.printf("%s", title);
+		this.browserwindow.set_entry_text(title);
 	}
-}
+}	
