@@ -22,13 +22,6 @@ public class BrowserNotebook: Notebook {
 		return this.get_nth_page(this.get_current_page()) as WebView;
 	}
 	
-	private void on_webview_title_changed(WebView webview, Frame webframe,
-										  string title) {
-		BrowserTabSign tab_label = this.get_tab_label(webview) as BrowserTabSign;
-		tab_label.set_title(title);
-	}
-		
-
 	private void on_webview_load_changed(LoadEvent loadevent) {
 		switch (loadevent) {
 			case LoadEvent.STARTED:
@@ -45,8 +38,4 @@ public class BrowserNotebook: Notebook {
 				break;
 		}
 	}
-
-	private void on_webview_load_finished() {
-	}
-
 }
