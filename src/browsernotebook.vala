@@ -51,11 +51,27 @@ public class BrowserNotebook: Notebook {
 		string title = webview.get_title();
 		this.browserwindow.set_title(title);
 	}*/
+	private BrowserTabSign get_current_label() {
+		return this.get_label(this.get_current_page());
+	}
+
+	private BrowserTabSign get_label(int index) {
+		return this.get_tab_label(this.get_widget(index)) as BrowserTabSign;
+	}
+
+	private WebView get_current_widget() {
+		return this.get_widget(this.get_current_page());
+	}
+
+	private WebView get_widget(int index) {
+		return this.get_nth_page(index) as WebView;
+	}
 
 	private void url_of_current_page_update() {
-		WebView webview = this.get_nth_page(this.get_current_page()) as WebView;
+		WebView webview = this.get_current_widget() as WebView;
+		BrowserTabSign browsertabsign = this.get_current_label();
 		string title = webview.get_uri();
-		stdout.printf("%s", title);
+		browsertabsign.set_title(title);
 		this.browserwindow.set_entry_text(title);
 	}
 }	
