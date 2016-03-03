@@ -11,7 +11,6 @@ public class BrowserNotebook: Notebook {
 		//ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
 		//scrolledwindow.add(new WebView());
 		WebView webview = new WebView();
-		webview.notify["title"].connect((sender, property) => this.on_webview_title_changed);
 		webview.load_changed.connect(this.on_webview_load_changed);
 		this.append_page(webview, new BrowserTabSign());
 		this.show_all();
