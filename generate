@@ -1,0 +1,28 @@
+#!/bin/bash
+
+SRC_DIR="$(readlink -f $(dirname "$0"))"
+
+build()
+{
+  BUILD_TYPE="$1"
+
+  BUILD_DIR="${SRC_DIR}/${BUILD_TYPE}/"
+
+  rm -rf ${BUILD_DIR}
+  mkdir -p ${BUILD_DIR}
+  cd ${BUILD_DIR}
+
+  echo ${BUILD_DIR}
+
+  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="$BUILD_TYPE" "$SRC_DIR"
+
+  if [ "$?" -gt 0 ]; then
+    echo -e "\n\ncmake exited with an error. Check cmake output above."
+    exit 1
+  fi
+}
+
+for t in debug release; do
+    build $t
+done
+
