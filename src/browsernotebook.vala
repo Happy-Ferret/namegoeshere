@@ -8,8 +8,6 @@ public class BrowserNotebook: Notebook {
 	}
 
 	public void new_tab() {
-		//ScrolledWindow scrolledwindow = new ScrolledWindow(null, null);
-		//scrolledwindow.add(new WebView());
 		WebView webview = new WebView();
 		webview.load_changed.connect(this.on_webview_load_changed);
 		this.append_page(webview, new BrowserTabSign());
