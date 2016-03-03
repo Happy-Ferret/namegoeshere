@@ -2,7 +2,7 @@ project("namegoeshere" C)
 # hehehe
 cmake_minimum_required(VERSION 3.4)
 
-file (GLOB VALA_PKG  ${CMAKE_SOURCE_DIR}/src/*.vala)
+#file (GLOB VALA_PKG  ${CMAKE_SOURCE_DIR}/src/*.vala)
 
 #valac -c $VALA_PKG --pkg gtk+-3.0 --pkg webkit2gtk-4.0 --glib-bla 2.38
 #--gresources blabla
@@ -29,7 +29,7 @@ link_libraries(${GTK_LIBRARIES})
 link_directories(${GTK_LIBRARY_DIRS})
 
 include(GResource)
-gresource(${CMAKE_CURRENT_SOURCE_DIR}/res gresources.xml
+gresource(${CMAKE_SOURCE_DIR}/res gresources.xml
 	${CMAKE_BINARY_DIR} RESOURCE_FILE)
 
 vala_precompile(VALA_C
@@ -42,7 +42,7 @@ PACKAGES
 	webkit2gtk-4.0
 OPTIONS
 	--target-glib=2.38
-	--gresources res/gresources.xml
+        --gresources ${CMAKE_SOURCE_DIR}/res/gresources.xml
 )
 
 add_executable("namegoeshere" ${VALA_C} ${RESOURCE_FILE})

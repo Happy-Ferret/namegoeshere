@@ -2,8 +2,12 @@ using Gtk;
 using WebKit;
 
 public class BrowserNotebook: Notebook {
+	
+	private BrowserWindow browserwindow;
 
-	public BrowserNotebook() {
+	public BrowserNotebook(BrowserWindow browserwindow) {
+		this.change_current_page.connect(this.on_current_page_changed);
+		this.browserwindow = browserwindow;
 		new_tab();
 	}
 
@@ -39,5 +43,11 @@ public class BrowserNotebook: Notebook {
 				//tab_label.set_title(title);
 				break;
 		}
+	}
+	
+	private void on_current_page_changed(int index) {
+		WebView webview = this.get_nth_page(index) as WebView;
+		string title = webview.get_title();
+		this.browserwindow.set_title(title);
 	}
 }
