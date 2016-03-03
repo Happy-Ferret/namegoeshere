@@ -35,6 +35,8 @@ public class BrowserNotebook: Notebook {
 				break;
 			case LoadEvent.FINISHED:
 				stdout.printf("finished\n");
+				//BrowserTabSign tab_label = this.get_tab_label(webview) as BrowserTabSign;
+				//tab_label.set_title(title);
 				break;
 		}
 	}
