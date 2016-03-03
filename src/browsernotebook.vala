@@ -12,7 +12,7 @@ public class BrowserNotebook: Notebook {
 		//scrolledwindow.add(new WebView());
 		WebView webview = new WebView();
 		webview.notify["title"].connect((sender, property) => this.on_webview_title_changed);
-		webview.load_changed.connect(this.on_webview_load_started);
+		webview.load_changed.connect(this.on_webview_load_changed);
 		this.append_page(webview, new BrowserTabSign());
 		this.show_all();
 	}
@@ -32,8 +32,21 @@ public class BrowserNotebook: Notebook {
 	}
 		
 
-	private void on_webview_load_started() {
-		stdout.printf("lelstartedwebview\n");
+	private void on_webview_load_changed(LoadEvent loadevent) {
+		switch (loadevent) {
+			case LoadEvent.STARTED:
+				stdout.printf("started\n");
+				break;
+			case LoadEvent.REDIRECTED:
+				stdout.printf("redirected\n");
+				break;
+			case LoadEvent.COMMITTED:
+				stdout.printf("committed\n");
+				break;
+			case LoadEvent.FINISHED:
+				stdout.printf("finished\n");
+				break;
+		}
 	}
 
 	private void on_webview_load_finished() {
