@@ -6,12 +6,15 @@ public class BrowserWindow: ApplicationWindow {
 
 	//[GtkChild] BrowserNotebook notebook;
 	[GtkChild] Entry urlbar;
+	[GtkChild] ToolButton btn_back;
+	[GtkChild] ToolButton btn_forward;
 	BrowserNotebook browsernotebook;
 
 	public BrowserWindow(Gtk.Application app) {
 		Object (application: app);
 		this.browsernotebook = new BrowserNotebook(this);
-		this.add(this.browsernotebook);
+		Box box = this.get_child() as Box;
+		box.pack_start(this.browsernotebook, true, true, 0);
 		stdout.printf("haha\n");
 		this.show_all();
 	}
@@ -28,9 +31,23 @@ public class BrowserWindow: ApplicationWindow {
 		browsernotebook.get_current_webview().load_uri(uri);
 	}
 
+	public void refresh_ui(Widget page) {
+		// TODO: find more fitting name
+		WebView webview = page as WebView;
+		this.set_entry_text(webview.get_uri());
+		if (webview.can_go_back()) {
+			btn_back.set_sensitive(true);
+		}
+		if (webview.can_go_forward()) {
+			btn_forward.set_sensitive(true);
+		}
+	}
+
 	[GtkCallback]
 	private void on_btn_back_clicked(ToolButton toolbutton) {
-		browsernotebook.get_current_webview().go_back();
+		WebView webview = browsernotebook.get_current_webview();
+		webview.go_back();
+		this.refresh_ui(webview);
 	}
 
 	[GtkCallback]
