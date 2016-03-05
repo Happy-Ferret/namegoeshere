@@ -11,7 +11,8 @@ public class BrowserWindow: ApplicationWindow {
 	public BrowserWindow(Gtk.Application app) {
 		Object (application: app);
 		this.browsernotebook = new BrowserNotebook(this);
-		this.add(this.browsernotebook);
+		Box box = this.get_child() as Box;
+		box.add(this.browsernotebook);
 		stdout.printf("haha\n");
 		this.show_all();
 	}
