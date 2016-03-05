@@ -46,11 +46,12 @@ public class BrowserNotebook: Notebook {
 		}
 	}
 	
-	/*private void on_current_page_changed(int index) {
+	/*private void switch_page(int index) {
 		WebView webview = this.get_nth_page(index) as WebView;
 		string title = webview.get_title();
 		this.browserwindow.set_title(title);
 	}*/
+
 	private BrowserTabSign get_current_label() {
 		return this.get_label(this.get_current_page());
 	}
@@ -73,5 +74,16 @@ public class BrowserNotebook: Notebook {
 		string title = webview.get_uri();
 		browsertabsign.set_title(title);
 		this.browserwindow.set_entry_text(title);
+	}
+
+	public string http_autocorrect(string uri) {
+		if( !("http://" in uri)) {
+			var builder = new StringBuilder();
+			builder.prepend("http://");
+			builder.append(uri);
+			return builder.str;
+		} else {
+			return uri;
+		}
 	}
 }	

@@ -23,7 +23,9 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_urlbar_activate(Entry entry) {
-		browsernotebook.get_current_webview().load_uri(entry.get_text());
+		string uri = entry.get_text();
+		uri = browsernotebook.http_autocorrect(uri);
+		browsernotebook.get_current_webview().load_uri(uri);
 	}
 
 	[GtkCallback]
@@ -33,6 +35,7 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_btn_forward_clicked(ToolButton toolbutton) {
+		stdout.printf("lolol\n");
 		browsernotebook.get_current_webview().go_forward();
 	}
 
