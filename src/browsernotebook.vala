@@ -71,9 +71,10 @@ public class BrowserNotebook: Notebook {
 	private void url_of_current_page_update() {
 		WebView webview = this.get_current_widget() as WebView;
 		BrowserTabSign browsertabsign = this.get_current_label();
-		string title = webview.get_uri();
-		browsertabsign.set_label_text(title);
-		this.browserwindow.set_entry_text(title);
+		string webview_uri = webview.get_uri();
+		string webview_title = webview.get_title();
+		browsertabsign.set_label_text(webview_title);
+		this.browserwindow.set_entry_text(webview_uri);
 	}
 
 	public string http_autocorrect(string uri) {
