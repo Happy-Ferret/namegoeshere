@@ -14,7 +14,7 @@ public class BrowserWindow: ApplicationWindow {
 		Object (application: app);
 		this.browsernotebook = new BrowserNotebook(this);
 		Box box = this.get_child() as Box;
-		box.add(this.browsernotebook);
+		box.pack_start(this.browsernotebook, true, true, 0);
 		stdout.printf("haha\n");
 		this.show_all();
 	}
@@ -31,7 +31,7 @@ public class BrowserWindow: ApplicationWindow {
 		browsernotebook.get_current_webview().load_uri(uri);
 	}
 
-	private void refresh_ui() {
+	public void refresh_ui() {
 		// TODO: find more fitting name
 		WebView webview = browsernotebook.get_current_webview();
 		this.set_entry_text(webview.get_uri());
@@ -46,7 +46,7 @@ public class BrowserWindow: ApplicationWindow {
 	[GtkCallback]
 	private void on_btn_back_clicked(ToolButton toolbutton) {
 		WebView webview = browsernotebook.get_current_webview();
-		browsernotebook.get_current_webview().go_back();
+		webview.go_back();
 		this.refresh_ui();
 	}
 
