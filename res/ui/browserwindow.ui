@@ -16,6 +16,7 @@
             <child>
               <object class="GtkToolButton" id="btn_back">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Back</property>
                 <property name="use_underline">True</property>
@@ -30,6 +31,7 @@
             <child>
               <object class="GtkToolButton" id="btn_forward">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Forward</property>
                 <property name="use_underline">True</property>
