@@ -6,9 +6,6 @@ public class BrowserNotebook: Notebook {
 	private BrowserWindow browserwindow;
 
 	public BrowserNotebook(BrowserWindow browserwindow) {
-		/*this.change_current_page.connect((index) => {
-			this.browserwindow.refresh_ui();
-		});*/
 		this.change_current_page.connect(this.on_current_page_changed);
 		this.browserwindow = browserwindow;
 		new_tab();
