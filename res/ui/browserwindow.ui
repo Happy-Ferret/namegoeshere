@@ -18,6 +18,7 @@
             <property name="label" translatable="yes">Back</property>
             <property name="use_underline">True</property>
             <property name="stock_id">gtk-go-back</property>
+            <signal name="clicked" handler="on_btn_back_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -31,6 +32,7 @@
             <property name="label" translatable="yes">Forward</property>
             <property name="use_underline">True</property>
             <property name="stock_id">gtk-go-forward</property>
+            <signal name="clicked" handler="on_btn_forward_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -104,4 +106,6 @@
       </object>
     </child>
   </template>
+  <object class="GtkAction" id="action1"/>
+  <object class="GtkAction" id="action2"/>
 </interface>

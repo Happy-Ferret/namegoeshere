@@ -6,7 +6,6 @@ public class BrowserWindow: ApplicationWindow {
 
 	//[GtkChild] BrowserNotebook notebook;
 	[GtkChild] Entry urlbar;
-	[GtkChild] ToolButton btn_forward;
 	BrowserNotebook browsernotebook;
 
 	public BrowserWindow(Gtk.Application app) {
