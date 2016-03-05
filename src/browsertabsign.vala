@@ -21,8 +21,8 @@ public class BrowserTabSign: Box {
 		this.show_all();
     }
 
-	public void set_title(string title) {
-		this.title.set_text(title);
+	public void set_label_text(string text) {
+		this.title.set_text(text);
 	}
 }
         

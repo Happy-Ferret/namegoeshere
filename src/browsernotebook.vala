@@ -72,7 +72,7 @@ public class BrowserNotebook: Notebook {
 		WebView webview = this.get_current_widget() as WebView;
 		BrowserTabSign browsertabsign = this.get_current_label();
 		string title = webview.get_uri();
-		browsertabsign.set_title(title);
+		browsertabsign.set_label_text(title);
 		this.browserwindow.set_entry_text(title);
 	}
 
