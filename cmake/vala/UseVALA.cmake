@@ -1,1 +1,0 @@
-UseVala.cmake

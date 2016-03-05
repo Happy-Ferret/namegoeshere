@@ -6,3 +6,6 @@ cmake_install.cmake
 install_manifest.txt
 debug/*
 release/*
+build/debug/*
+build/release/*
+namegoeshere
