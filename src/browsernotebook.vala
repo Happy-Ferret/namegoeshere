@@ -78,6 +78,9 @@ public class BrowserNotebook: Notebook {
 
 	public string http_autocorrect(string uri) {
 		if( !("http://" in uri)) {
+			if( "https://" in uri){
+				return uri;
+			}
 			var builder = new StringBuilder();
 			builder.prepend("http://");
 			builder.append(uri);
