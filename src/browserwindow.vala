@@ -31,9 +31,9 @@ public class BrowserWindow: ApplicationWindow {
 		browsernotebook.get_current_webview().load_uri(uri);
 	}
 
-	public void refresh_ui() {
+	public void refresh_ui(Widget page) {
 		// TODO: find more fitting name
-		WebView webview = browsernotebook.get_current_webview();
+		WebView webview = page as WebView;
 		this.set_entry_text(webview.get_uri());
 		if (webview.can_go_back()) {
 			btn_back.set_sensitive(true);
@@ -47,7 +47,7 @@ public class BrowserWindow: ApplicationWindow {
 	private void on_btn_back_clicked(ToolButton toolbutton) {
 		WebView webview = browsernotebook.get_current_webview();
 		webview.go_back();
-		this.refresh_ui();
+		this.refresh_ui(webview);
 	}
 
 	[GtkCallback]

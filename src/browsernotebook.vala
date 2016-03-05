@@ -6,7 +6,7 @@ public class BrowserNotebook: Notebook {
 	private BrowserWindow browserwindow;
 
 	public BrowserNotebook(BrowserWindow browserwindow) {
-		this.change_current_page.connect(this.on_current_page_changed);
+		this.switch_page.connect(this.on_page_switched);
 		this.browserwindow = browserwindow;
 		new_tab();
 	}
@@ -26,9 +26,8 @@ public class BrowserNotebook: Notebook {
 		return this.get_nth_page(this.get_current_page()) as WebView;
 	}
 
-	private bool on_current_page_changed(int index) {
-		this.browserwindow.refresh_ui();
-		return true;
+	private void on_page_switched(Widget page, uint page_num) {
+		this.browserwindow.refresh_ui(page);
 	}
 	
 	private void on_webview_load_changed(LoadEvent loadevent) {
