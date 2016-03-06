@@ -13,17 +13,26 @@ A new approach at a...web browser, in Vala
 ## Contribute
 If you want to contribute, you'll need the following dependencies:
 ```
-cmake
-vala
-gtk3
-webkitgtk4
+git - to clone the repository
+make and cmake - build script
+vala - converting the vala source to C
+gtk3 - the graphical toolkit
+webkitgtk4 - browser engine
 ```
 
 ### Arch Linux or Parabola GNU/Linux-libre
-TODO...
+Arch Linux doesn't differenciate development packages from normal ones.
+```
+# pacman -S base-devel git cmake gtk3 webkit2gtk vala
+$ ./generate
+$ ./make
+```
 
 ### Fedora
 If you are running Fedora, this should get you started:
 ```
+# dnf groupinstall "C Development Tools and Libraries"
 # dnf install git cmake vala gtk3-devel webkitgtk4-devel
+$ ./generate
+$ ./make
 ```
