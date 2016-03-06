@@ -18,6 +18,7 @@ public class BrowserTabSign: Box {
         this.pack_start(favicon, false, false, 0);
         this.pack_start(title, true, true, 0);
         this.pack_start(closebutton, false, false, 0);
+		this.closebutton.connect(browsernotebook.remove_page(browsernotebook.page_num(this)));
 		this.show_all();
     }
 
