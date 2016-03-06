@@ -8,4 +8,5 @@ debug/*
 release/*
 build/debug/*
 build/release/*
-namegoeshere
+namegoeshere*
+.make*
