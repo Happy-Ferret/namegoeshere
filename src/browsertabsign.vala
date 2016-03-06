@@ -9,9 +9,9 @@ public class BrowserTabSign: Box {
 	private Image favicon;
 	private Label title;
 	private Button closebutton;
+	private BrowserNotebook browsernotebook;
 
-    public BrowserTabSign(BrowserNotebook parent) {
-		this.parent = parent;
+    public BrowserTabSign() {
 		favicon = new Image.from_icon_name(ICON_TAB, IconSize.SMALL_TOOLBAR);
 		title = new Label(LABEL_TAB);
 		closebutton = new Button.from_icon_name(ICON_CLOSE,
@@ -28,7 +28,7 @@ public class BrowserTabSign: Box {
 	}
 
 	public void remove_itself() {
-		this.parent.remove_tab(this);
+		browsernotebook.remove_tab(this);
 	}
 }
         
