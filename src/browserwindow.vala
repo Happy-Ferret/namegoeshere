@@ -37,16 +37,8 @@ public class BrowserWindow: ApplicationWindow {
 		WebView webview = page as WebView;
 		string uri = webview.get_uri();
 		this.set_entry_text(uri);
-		if (webview.can_go_back()) {
-			btn_back.set_sensitive(true);
-		} else {
-			btn_back.set_sensitive(false);
-		}
-		if (webview.can_go_forward()) {
-			btn_forward.set_sensitive(true);
-		} else {
-			btn_back.set_sensitive(false);
-		}
+		btn_back.set_sensitive(webview.can_go_back());
+		btn_forward.set_sensitive(webview.can_go_forward());
 	}
 
 	[GtkCallback]
