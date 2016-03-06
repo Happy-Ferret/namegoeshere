@@ -10,6 +10,10 @@ for i in "$@"; do
 			BUILD_TYPES="release"
 		    shift
 	    ;;
+	    debug)
+			BUILD_TYPES="debug"
+		    shift
+	    ;;
 	    all)
 			BUILD_TYPES="${BUILD_TYPES} release"
 		    shift
