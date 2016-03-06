@@ -2,10 +2,13 @@ project("namegoeshere" C)
 # hehehe
 cmake_minimum_required(VERSION 3.4)
 
+set(BUILD_ROOT ${CMAKE_SOURCE_DIR})
 set(PROJECT_ROOT ${CMAKE_SOURCE_DIR}/.. CACHE FILEPATH "description")
 set(SRC_ROOT ${PROJECT_ROOT}/src CACHE FILEPATH "description")
+set(RES_ROOT ${PROJECT_ROOT}/res CACHE FILEPATH "description")
 
 set(CMAKE_CURRENT_SOURCE_DIR ${PROJECT_ROOT})
+set(CMAKE_SOURCE_DIR ${PROJECT_ROOT})
 
 #file (GLOB VALA_PKG  ${CMAKE_SOURCE_DIR}/src/*.vala)
 
@@ -16,9 +19,9 @@ set(CMAKE_CURRENT_SOURCE_DIR ${PROJECT_ROOT})
 #	`pkg-config --cflags gtk+-3.0 --libs gtk+-3.0 gmodule-export-2.0` -o lele2
 
 list(APPEND CMAKE_MODULE_PATH
-	${CMAKE_SOURCE_DIR}/cmake/vala
-	${CMAKE_SOURCE_DIR}/cmake/GCR_CMake/macros
-	${CMAKE_SOURCE_DIR}/cmake/gresource
+	${BUILD_ROOT}/cmake/vala
+	${BUILD_ROOT}/cmake/GCR_CMake/macros
+	${BUILD_ROOT}/cmake/gresource
 )
 
 # TODO: use https://github.com/Makman2/GCR_CMake to generate xml automatically
@@ -33,9 +36,27 @@ add_definitions(${GTK_CFLAGS} ${GTK_CFLAGS_OTHER})
 link_libraries(${GTK_LIBRARIES})
 link_directories(${GTK_LIBRARY_DIRS})
 
-include(GResource)
-gresource(${PROJECT_ROOT}/res gresources.xml
-	${CMAKE_BINARY_DIR} RESOURCE_FILE)
+include(GlibCompileResourcesSupport)
+
+# Set the resources to bundle.
+set(RESOURCE_LIST
+    ui/browserwindow.ui
+   )
+
+# Compile the resources.
+compile_gresources(RESOURCE_FILE
+                   XML_OUT
+                   TARGET src/gresources.c
+                   TYPE EMBED_C
+                   PREFIX /de/uni-frankfurt/namegoeshere
+                   SOURCE_DIR ${RES_ROOT}
+                   RESOURCES ${RESOURCE_LIST})
+
+# Add a custom target to the makefile. Now make builds our resource file.
+# It depends on the output RESOURCE_FILE.
+add_custom_target(resource ALL DEPENDS ${RESOURCE_FILE})
+
+message("Resource file is ${XML_OUT}")
 
 vala_precompile(VALA_C
 SOURCES
@@ -48,7 +69,7 @@ PACKAGES
 	webkit2gtk-4.0
 OPTIONS
 	--target-glib=2.38
-        --gresources ${PROJECT_ROOT}/res/gresources.xml
+    --gresources ${XML_OUT}
 )
 
 SET(CMAKE_CXX_FLAGS "-Wall")
