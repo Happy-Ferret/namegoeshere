@@ -21,7 +21,7 @@ public class BrowserTabSign: Box {
         this.pack_start(favicon, false, false, 0);
         this.pack_start(title, true, true, 0);
         this.pack_start(closebutton, false, false, 0);
-		this.closebutton.clicked.connect(this.remove_itself);
+		this.closebutton.clicked.connect(this.on_closebutton_clicked);
 		this.show_all();
     }
 
@@ -29,7 +29,7 @@ public class BrowserTabSign: Box {
 		this.title.set_text(text);
 	}
 
-	public void remove_itself() {
+	public void on_closebutton_clicked() {
 		browsernotebook.remove_tab(this);
 	}
 }
