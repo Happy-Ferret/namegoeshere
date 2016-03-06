@@ -10,7 +10,8 @@ public class BrowserTabSign: Box {
 	private Label title;
 	private Button closebutton;
 
-    public BrowserTabSign() {
+    public BrowserTabSign(BrowserNotebook parent) {
+		this.parent = parent;
 		favicon = new Image.from_icon_name(ICON_TAB, IconSize.SMALL_TOOLBAR);
 		title = new Label(LABEL_TAB);
 		closebutton = new Button.from_icon_name(ICON_CLOSE,
@@ -18,12 +19,16 @@ public class BrowserTabSign: Box {
         this.pack_start(favicon, false, false, 0);
         this.pack_start(title, true, true, 0);
         this.pack_start(closebutton, false, false, 0);
-		this.closebutton.connect(browsernotebook.remove_page(browsernotebook.page_num(this)));
+		this.closebutton.clicked.connect(this.remove_itself);
 		this.show_all();
     }
 
 	public void set_label_text(string text) {
 		this.title.set_text(text);
+	}
+
+	public void remove_itself() {
+		this.parent.remove_tab(this);
 	}
 }
         
