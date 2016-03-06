@@ -34,6 +34,7 @@ public class BrowserNotebook: Notebook {
 	}
 	
 	private void on_webview_load_changed(LoadEvent loadevent) {
+		this.url_of_current_page_update();
 		switch (loadevent) {
 			case LoadEvent.STARTED:
 				stdout.printf("started\n");
@@ -46,7 +47,6 @@ public class BrowserNotebook: Notebook {
 				break;
 			case LoadEvent.FINISHED:
 				stdout.printf("finished\n");
-				this.url_of_current_page_update();
 				//BrowserTabSign tab_label = this.get_tab_label(webview) as BrowserTabSign;
 				//tab_label.set_title(title);
 				break;
@@ -79,9 +79,13 @@ public class BrowserNotebook: Notebook {
 		WebView webview = this.get_current_widget() as WebView;
 		BrowserTabSign browsertabsign = this.get_current_label();
 		string webview_uri = webview.get_uri();
+		if (webview_uri != null) {
+			this.browserwindow.set_entry_text(webview_uri);
+		}
 		string webview_title = webview.get_title();
-		browsertabsign.set_label_text(webview_title);
-		this.browserwindow.set_entry_text(webview_uri);
+		if (webview_title != null) {
+			browsertabsign.set_label_text(webview_title);
+		}
 	}
 
 	public string http_autocorrect(string uri) {
