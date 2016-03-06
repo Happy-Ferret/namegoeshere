@@ -2,39 +2,60 @@
 
 BUILD_TYPE="debug"
 
+BUILD_TYPES="debug"
+
 for i in "$@"; do
 	case $i in
 	    release)
-			BUILD_TYPE="release"
+			BUILD_TYPES="release"
 		    shift
 	    ;;
+	    all)
+			BUILD_TYPES="${BUILD_TYPES} release"
+		    shift
+		;;
 	    *)
 	        # unknown option
 	    ;;
 	esac
 done
 
-BUILD_DIR="build/${BUILD_TYPE}"
+build(){
 
-BUILD_BINARY_CACHE=".make_${BUILD_TYPE}_binaries"
+	BUILD_TYPE=$1
+	shift
 
-OUTPUT_FILE=$(cd $BUILD_DIR && make $@ | tee /dev/tty | awk '/Built target/ {print $4}')
+	if [ ${#@} -eq 0 ]; then
+		echo "Building target ${BUILD_TYPE}"
+	fi
 
-BUILD_STATUS=$?
+	BUILD_DIR="build/${BUILD_TYPE}"
 
-if [ $BUILD_STATUS -eq 0 ] && [ ${#@} -eq 0 ]; then
-	OUTPUT_FILE_NAME="${OUTPUT_FILE}-${BUILD_TYPE}"
+	BUILD_BINARY_CACHE=".make_${BUILD_TYPE}_binaries"
 
-	rm ${OUTPUT_FILE_NAME} 2> /dev/null
-	echo ${OUTPUT_FILE_NAME} > $BUILD_BINARY_CACHE
-	ln -s ${BUILD_DIR}/${OUTPUT_FILE} ${OUTPUT_FILE_NAME}
-fi
+	OUTPUT_FILE=$(cd $BUILD_DIR && make $@ | tee /dev/tty | awk '/Built target/ {print $4}')
 
-if [ -e $BUILD_BINARY_CACHE ] && [[ "$1" == "clean" || $BUILD_STATUS -ne 0 ]]; then
-	BINARIES=$(cat $BUILD_BINARY_CACHE)
-	rm $BUILD_BINARY_CACHE
+	BUILD_STATUS=$?
 
-	for f in $BINARIES; do
-		rm $f
-	done
-fi
+	if [ $BUILD_STATUS -eq 0 ] && [ ${#@} -eq 0 ]; then
+		OUTPUT_FILE_NAME="${OUTPUT_FILE}-${BUILD_TYPE}"
+
+		rm ${OUTPUT_FILE_NAME} 2> /dev/null
+		echo ${OUTPUT_FILE_NAME} > $BUILD_BINARY_CACHE
+		ln -s ${BUILD_DIR}/${OUTPUT_FILE} ${OUTPUT_FILE_NAME}
+	fi
+
+	if [ -e $BUILD_BINARY_CACHE ] && [[ "$1" == "clean" || $BUILD_STATUS -ne 0 ]]; then
+		BINARIES=$(cat $BUILD_BINARY_CACHE)
+		rm $BUILD_BINARY_CACHE
+
+		for f in $BINARIES; do
+			rm $f
+		done
+	fi
+
+}
+
+for t in $BUILD_TYPES; do
+	build $t $@
+done
