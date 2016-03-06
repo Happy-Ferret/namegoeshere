@@ -6,7 +6,9 @@ build()
 {
   BUILD_TYPE="$1"
 
-  BUILD_DIR="${BUILD_ROOT}/${BUILD_TYPE}/"
+  BUILD_TYPE_DIRNAME=$(echo "$BUILD_TYPE" | tr "[:upper:]" "[:lower:]")
+
+  BUILD_DIR="${BUILD_ROOT}/${BUILD_TYPE_DIRNAME}/"
 
   rm -rf ${BUILD_DIR}
   mkdir -p ${BUILD_DIR}
@@ -22,7 +24,7 @@ build()
   fi
 }
 
-for t in debug release; do
+for t in Debug Release; do
     build $t
 done
 

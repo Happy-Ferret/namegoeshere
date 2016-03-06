@@ -51,4 +51,18 @@ OPTIONS
         --gresources ${PROJECT_ROOT}/res/gresources.xml
 )
 
+SET(CMAKE_CXX_FLAGS "-Wall")
+SET(CMAKE_CXX_FLAGS_RELEASE "-O2")
+SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
+
+message("CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
+
+message("CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
+
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+	message("CMAKE_CXX_FLAGS_DEBUG is ${CMAKE_CXX_FLAGS_DEBUG}")
+else()
+	message("CMAKE_CXX_FLAGS_RELEASE is ${CMAKE_CXX_FLAGS_RELEASE}")
+endif()
+
 add_executable("namegoeshere" ${VALA_C} ${RESOURCE_FILE})
