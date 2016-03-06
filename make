@@ -25,8 +25,8 @@ BUILD_STATUS=$?
 if [ $BUILD_STATUS -eq 0 ] && [ ${#@} -eq 0 ]; then
 	OUTPUT_FILE_NAME="${OUTPUT_FILE}-${BUILD_TYPE}"
 
-	rm ${OUTPUT_FILE} 2> /dev/null
-	echo ${OUTPUT_FILE} > $BUILD_BINARY_CACHE
+	rm ${OUTPUT_FILE_NAME} 2> /dev/null
+	echo ${OUTPUT_FILE_NAME} > $BUILD_BINARY_CACHE
 	ln -s ${BUILD_DIR}/${OUTPUT_FILE} ${OUTPUT_FILE_NAME}
 fi
 
