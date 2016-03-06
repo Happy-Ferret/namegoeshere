@@ -50,8 +50,9 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_btn_forward_clicked(ToolButton toolbutton) {
-		stdout.printf("lolol\n");
-		browsernotebook.get_current_webview().go_forward();
+		WebView webview = browsernotebook.get_current_webview();
+		webview.go_forward();
+		this.refresh_ui(webview);
 	}
 
 	public void set_entry_text(string? text) {
