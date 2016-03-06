@@ -26,20 +26,30 @@ public class BrowserWindow: ApplicationWindow {
 
 	[GtkCallback]
 	private void on_urlbar_activate(Entry entry) {
-		string uri = entry.get_text();
-		uri = browsernotebook.http_autocorrect(uri);
-		browsernotebook.get_current_webview().load_uri(uri);
+		string uri = browsernotebook.http_autocorrect(entry.get_text());
+		WebView webview = browsernotebook.get_current_webview();
+		webview.load_uri(uri);
+		this.refresh_ui(webview);
 	}
 
 	public void refresh_ui(Widget page) {
 		// TODO: find more fitting name
 		WebView webview = page as WebView;
-		this.set_entry_text(webview.get_uri());
+		string uri = webview.get_uri();
+		if (uri != null) {
+			this.set_entry_text(uri);
+		} else {
+			this.set_entry_text("");
+		}
 		if (webview.can_go_back()) {
 			btn_back.set_sensitive(true);
+		} else {
+			btn_back.set_sensitive(false);
 		}
 		if (webview.can_go_forward()) {
 			btn_forward.set_sensitive(true);
+		} else {
+			btn_back.set_sensitive(false);
 		}
 	}
 
