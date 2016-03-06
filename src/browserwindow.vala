@@ -66,8 +66,9 @@ public class BrowserWindow: ApplicationWindow {
 		browsernotebook.get_current_webview().go_forward();
 	}
 
-	public void set_entry_text(string text) {
-		urlbar.set_text(text);
+	public void set_entry_text(string? text) {
+		// if text == null pass "", else pass text
+		urlbar.set_text(text ?? "");
 	}
 
 }
