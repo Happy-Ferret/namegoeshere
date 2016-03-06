@@ -23,11 +23,11 @@ OUTPUT_FILE=$(cd $BUILD_DIR && make $@ | tee /dev/tty | awk '/Built target/ {pri
 BUILD_STATUS=$?
 
 if [ $BUILD_STATUS -eq 0 ] && [ ${#@} -eq 0 ]; then
-	OUTPUT_FILE="${OUTPUT_FILE}-${BUILD_TYPE}"
+	OUTPUT_FILE_NAME="${OUTPUT_FILE}-${BUILD_TYPE}"
 
 	rm ${OUTPUT_FILE} 2> /dev/null
 	echo ${OUTPUT_FILE} > $BUILD_BINARY_CACHE
-	ln -s ${BUILD_DIR}/${OUTPUT_FILE}
+	ln -s ${BUILD_DIR}/${OUTPUT_FILE} ${OUTPUT_FILE_NAME}
 fi
 
 if [ -e $BUILD_BINARY_CACHE ] && [[ "$1" == "clean" || $BUILD_STATUS -ne 0 ]]; then
