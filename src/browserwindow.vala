@@ -36,11 +36,7 @@ public class BrowserWindow: ApplicationWindow {
 		// TODO: find more fitting name
 		WebView webview = page as WebView;
 		string uri = webview.get_uri();
-		if (uri != null) {
-			this.set_entry_text(uri);
-		} else {
-			this.set_entry_text("");
-		}
+		this.set_entry_text(uri);
 		if (webview.can_go_back()) {
 			btn_back.set_sensitive(true);
 		} else {
