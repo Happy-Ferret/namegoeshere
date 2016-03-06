@@ -11,7 +11,9 @@ public class BrowserTabSign: Box {
 	private Button closebutton;
 	private BrowserNotebook browsernotebook;
 
-    public BrowserTabSign() {
+    public BrowserTabSign(BrowserNotebook browsernotebook) {
+		this.browsernotebook = browsernotebook;
+
 		favicon = new Image.from_icon_name(ICON_TAB, IconSize.SMALL_TOOLBAR);
 		title = new Label(LABEL_TAB);
 		closebutton = new Button.from_icon_name(ICON_CLOSE,

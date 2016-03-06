@@ -14,7 +14,7 @@ public class BrowserNotebook: Notebook {
 	public void new_tab() {
 		WebView webview = new WebView();
 		webview.load_changed.connect(this.on_webview_load_changed);
-		this.append_page(webview, new BrowserTabSign());
+		this.append_page(webview, new BrowserTabSign(this));
 		this.show_all();
 		this.set_current_page(this.get_n_pages() - 1);
 		browserwindow.refresh_ui(webview);
