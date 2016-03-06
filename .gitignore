@@ -10,3 +10,4 @@ build/debug/*
 build/release/*
 namegoeshere*
 .make*
+.gresources.xml
