@@ -1,7 +1,5 @@
 #!/bin/bash
 
-BUILD_TYPE="debug"
-
 BUILD_TYPES="debug"
 
 for i in "$@"; do
@@ -29,7 +27,7 @@ build(){
 	BUILD_TYPE=$1
 	shift
 
-	if [ ${#@} -eq 0 ]; then
+	if [ "$1" != "clean" ]; then
 		echo "Building target ${BUILD_TYPE}"
 	fi
 
@@ -41,7 +39,7 @@ build(){
 
 	BUILD_STATUS=$?
 
-	if [ $BUILD_STATUS -eq 0 ] && [ ${#@} -eq 0 ]; then
+	if [ $BUILD_STATUS -eq 0 ] && [ "$1" != "clean" ]; then
 		OUTPUT_FILE_NAME="${OUTPUT_FILE}-${BUILD_TYPE}"
 
 		rm ${OUTPUT_FILE_NAME} 2> /dev/null
