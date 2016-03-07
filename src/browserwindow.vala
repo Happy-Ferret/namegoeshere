@@ -15,7 +15,6 @@ public class BrowserWindow: ApplicationWindow {
 		this.browsernotebook = new BrowserNotebook(this);
 		Box box = this.get_child() as Box;
 		box.pack_start(this.browsernotebook, true, true, 0);
-		stdout.printf("haha\n");
 		this.show_all();
 	}
 
@@ -45,14 +44,12 @@ public class BrowserWindow: ApplicationWindow {
 	private void on_btn_back_clicked(ToolButton toolbutton) {
 		WebView webview = browsernotebook.get_current_webview();
 		webview.go_back();
-		this.refresh_ui(webview);
 	}
 
 	[GtkCallback]
 	private void on_btn_forward_clicked(ToolButton toolbutton) {
 		WebView webview = browsernotebook.get_current_webview();
 		webview.go_forward();
-		this.refresh_ui(webview);
 	}
 
 	public void set_entry_text(string? text) {

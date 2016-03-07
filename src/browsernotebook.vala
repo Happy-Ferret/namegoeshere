@@ -40,6 +40,7 @@ public class BrowserNotebook: Notebook {
 	
 	private void on_webview_load_changed(LoadEvent loadevent) {
 		this.url_of_current_page_update();
+		this.browserwindow.refresh_ui(this.get_current_webview());
 		switch (loadevent) {
 			case LoadEvent.STARTED:
 				stdout.printf("started\n");
