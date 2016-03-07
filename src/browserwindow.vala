@@ -13,6 +13,7 @@ public class BrowserWindow: ApplicationWindow {
 	public BrowserWindow(Gtk.Application app) {
 		Object (application: app);
 		this.browsernotebook = new BrowserNotebook(this);
+		new PreferenceManager();
 		Box box = this.get_child() as Box;
 		box.pack_start(this.browsernotebook, true, true, 0);
 		stdout.printf("haha\n");
